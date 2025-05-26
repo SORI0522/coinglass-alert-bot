@@ -19,3 +19,7 @@ def alert():
         payload = {"text": f"🚀 강한 롱 우세: 비율 = {data['long_short_ratio']}"}
         requests.post(TRADINGVIEW_WEBHOOK_URL, json=payload)
     return {"status": "ok"}
+
+
+if __name__ == '__main__':
+    app.run(host='0.0.0.0', port=10000)
