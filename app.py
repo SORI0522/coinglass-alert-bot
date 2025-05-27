@@ -28,3 +28,7 @@ def alert():
     except Exception as e:
         print("❗서버 처리 오류:", str(e))
         return jsonify({"error": str(e)}), 500
+
+if __name__ == '__main__':
+    app.run(host='0.0.0.0', port=10000)
+
