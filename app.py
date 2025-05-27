@@ -4,7 +4,7 @@ import requests
 app = Flask(__name__)
 
 # 🚀 실제 TradingView Webhook 주소 입력
-TRADINGVIEW_WEBHOOK_URL = "TRADINGVIEW_WEBHOOK_URL = "https://coinglass-alert-bot.onrender.com/alert"
+TRADINGVIEW_WEBHOOK_URL = "https://coinglass-alert-bot.onrender.com/alert"
 
 @app.route('/')
 def home():
