@@ -1,10 +1,6 @@
 from flask import Flask, request, jsonify
-import requests
 
 app = Flask(__name__)
-
-# ✅ 실제 TradingView Webhook 주소로 변경하세요 (아래는 예시)
-TRADINGVIEW_WEBHOOK_URL = "https://coinglass-alert-bot.onrender.com/alert"
 
 @app.route('/')
 def home():
@@ -20,11 +16,9 @@ def alert():
             print("❌ 데이터 없음 또는 형식 오류")
             return jsonify({"error": "Missing or invalid JSON"}), 400
 
-        # 조건: long/short 비율이 2.5 이상이면 TradingView에 전달
+        # 조건: long_short_ratio >= 2.5 일 때 로깅만 수행
         if data['long_short_ratio'] >= 2.5:
-            payload = {"text": f"🚀 강한 롱 우세! 비율: {data['long_short_ratio']}"}
-            resp = requests.post(TRADINGVIEW_WEBHOOK_URL, json=payload)
-            print(f"📤 TradingView에 보냄: {resp.status_code}")
+            print(f"🚀 강한 롱 우세! 비율: {data['long_short_ratio']}")
 
         return jsonify({"status": "ok"}), 200
 
