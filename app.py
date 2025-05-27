@@ -3,7 +3,7 @@ import requests
 
 app = Flask(__name__)
 
-TRADINGVIEW_WEBHOOK_URL = "https://your_webhook_url"
+TRADINGVIEW_WEBHOOK_URL = "TRADINGVIEW_WEBHOOK_URL = "https://coinglass-alert-bot.onrender.com/alert"
 
 @app.route('/', methods=['GET'])
 def home():
