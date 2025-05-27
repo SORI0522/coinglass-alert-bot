@@ -3,6 +3,9 @@ import requests
 
 app = Flask(__name__)
 
+# ✅ 실제 TradingView Webhook 주소로 변경하세요 (아래는 예시)
+TRADINGVIEW_WEBHOOK_URL = "https://coinglass-alert-bot.onrender.com/alert"
+
 @app.route('/')
 def home():
     return "✅ Coinglass TradingView Webhook Bot Running"
@@ -22,7 +25,7 @@ def alert():
             payload = {"text": f"🚀 강한 롱 우세! 비율: {data['long_short_ratio']}"}
             resp = requests.post(TRADINGVIEW_WEBHOOK_URL, json=payload)
             print(f"📤 TradingView에 보냄: {resp.status_code}")
-        
+
         return jsonify({"status": "ok"}), 200
 
     except Exception as e:
@@ -31,4 +34,3 @@ def alert():
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=10000)
-
